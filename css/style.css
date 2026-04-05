@@ -151,7 +151,7 @@ section { padding: 80px 0; }
 }
 
 .logo-img {
-  height: 120px;
+  height: 170px;
   width: auto;
   display: block;
   mix-blend-mode: screen;
@@ -159,7 +159,7 @@ section { padding: 80px 0; }
 }
 
 .footer-brand .logo-img {
-  height: 130px;
+  height: 180px;
 }
 
 .invoice-logo .logo-img {
