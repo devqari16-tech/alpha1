@@ -1,0 +1,118 @@
+<div style="font-family: Arial, sans-serif; font-size: 13px; color: #111; padding: 16px 8px; background-color: #e8ecf0;">
+
+  <!-- Paper card -->
+  <div style="max-width: 680px; margin: auto; background: #ffffff; border: 1px solid #c0c5ce;">
+
+    <!-- ====== HEADER: Logo left + Contact right ====== -->
+    <table style="width: 100%; border-collapse: collapse; border-bottom: 2px solid #1E2A38;">
+      <tr>
+        <td style="padding: 20px 24px 16px; vertical-align: top;">
+          <div style="font-size: 26px; font-weight: 900; color: #1E2A38; letter-spacing: 1px; line-height: 1;">ALPHA</div>
+          <div style="font-size: 10px; font-weight: 700; color: #E53935; letter-spacing: 2px; text-transform: uppercase; margin-top: 2px;">ONTARIO CONSTRUCTION</div>
+        </td>
+        <td style="padding: 20px 24px 16px; text-align: right; vertical-align: top; font-size: 12px; color: #222; line-height: 2.0;">
+          <div>&#128222; (437) 60 30 40 8</div>
+          <div>&#9993; info@AlphaOntarioConstruction.ca</div>
+          <div>&#127760; www.AlphaOntarioConstruction.ca</div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- ====== GREETING ====== -->
+    <div style="padding: 16px 24px 4px;">
+      <p style="margin: 0 0 4px; font-size: 13px; color: #1E2A38;">Dear <strong>{{to_name}}</strong>,</p>
+      <p style="margin: 0 0 12px; color: #555; font-size: 12px; line-height: 1.6;">{{message}}</p>
+    </div>
+
+    <!-- ====== INVOICE META: # / Date / For  +  Bill To ====== -->
+    <table style="width: 100%; border-collapse: collapse; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;">
+      <tr>
+        <td style="padding: 14px 24px 12px; vertical-align: top; width: 50%; border-right: 1px solid #ddd;">
+          <table style="border-collapse: collapse; width: 100%;">
+            <tr>
+              <td style="font-weight: 800; font-size: 12px; white-space: nowrap; padding: 4px 8px 4px 0; color: #111;">INVOICE #:</td>
+              <td style="font-size: 13px; font-weight: 700; border-bottom: 1px solid #555; padding: 4px 4px; color: #111; width: 100%;">{{invoice_number}}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 800; font-size: 12px; white-space: nowrap; padding: 4px 8px 4px 0; color: #111;">DATE:</td>
+              <td style="font-size: 13px; border-bottom: 1px solid #555; padding: 4px 4px; color: #111;">{{invoice_date}}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 800; font-size: 12px; white-space: nowrap; padding: 4px 8px 4px 0; color: #111;">FOR:</td>
+              <td style="font-size: 13px; border-bottom: 1px solid #555; padding: 4px 4px; color: #111;">{{project_address}}</td>
+            </tr>
+          </table>
+        </td>
+        <td style="padding: 14px 24px 12px; vertical-align: top; width: 50%;">
+          <div style="font-weight: 800; font-size: 12px; color: #111; margin-bottom: 8px;">BILL TO:</div>
+          <div style="font-size: 13px; font-weight: 700; border-bottom: 1px solid #555; padding: 4px 0 4px 4px; color: #111; min-height: 22px;">{{client_name}}</div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- ====== LINE ITEMS TABLE ====== -->
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background-color: #1E2A38;">
+          <th style="padding: 10px 14px; text-align: left; color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; border: 1px solid #1E2A38; width: 46%;">DESCRIPTION</th>
+          <th style="padding: 10px 8px; text-align: center; color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; border: 1px solid #1E2A38; width: 12%;">QTY.</th>
+          <th style="padding: 10px 10px; text-align: right; color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; border: 1px solid #1E2A38; width: 18%;">RATE ($)</th>
+          <th style="padding: 10px 14px; text-align: right; color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; border: 1px solid #1E2A38; width: 24%;">AMOUNT ($)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{{line_items}}}
+      </tbody>
+
+      <!-- ====== TOTALS ====== -->
+      <tfoot>
+        <tr style="background-color: #d0d3da;">
+          <td colspan="2" style="border: 1px solid #aaa; padding: 7px 10px;"></td>
+          <td style="border: 1px solid #aaa; padding: 7px 10px; text-align: right; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #111;">SUBTOTAL</td>
+          <td style="border: 1px solid #aaa; padding: 7px 14px; font-weight: 700; font-size: 13px; color: #111;">{{subtotal}}</td>
+        </tr>
+        <tr style="background-color: #c4c7ce;">
+          <td colspan="2" style="border: 1px solid #aaa; padding: 7px 10px;"></td>
+          <td style="border: 1px solid #aaa; padding: 7px 10px; text-align: right; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #111;">HST</td>
+          <td style="border: 1px solid #aaa; padding: 7px 14px; font-weight: 700; font-size: 13px; color: #111;">{{tax}}</td>
+        </tr>
+        <tr style="background-color: #b4b7bf;">
+          <td colspan="2" style="border: 1px solid #999; padding: 8px 10px;"></td>
+          <td style="border: 1px solid #999; padding: 8px 10px; text-align: right; font-weight: 900; font-size: 12px; text-transform: uppercase; color: #000;">TOTAL</td>
+          <td style="border: 1px solid #999; padding: 8px 14px; font-weight: 900; font-size: 14px; color: #000;">{{total}}</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- ====== NOTES ====== -->
+    <div style="padding: 12px 24px 4px;">
+      <span style="font-size: 11px; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 0.8px;">Additional Notes:</span>
+      <span style="font-size: 12px; color: #444; margin-left: 6px;">{{notes}}</span>
+    </div>
+
+    <!-- ====== FOOTER ====== -->
+    <div style="padding: 14px 24px 20px;">
+      <div style="border-top: 1.5px solid #333; margin-bottom: 10px;"></div>
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="vertical-align: bottom; font-size: 11px; color: #333; line-height: 1.8;">
+            <div>Make all cheques payable to <strong>ALPHA ONTARIO CONSTRUCTION INC.</strong></div>
+            <div>If you have any questions, please contact 437 60 30 40 8</div>
+            <div>HST # 74967 5823 RT0001</div>
+          </td>
+          <td style="vertical-align: bottom; text-align: right; font-size: 14px; font-style: italic; font-weight: 700; color: #000; white-space: nowrap; padding-left: 16px;">
+            Thank you for your Business!
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- ====== BOTTOM BAR ====== -->
+    <div style="background-color: #1E2A38; padding: 10px 24px; text-align: center;">
+      <span style="color: rgba(255,255,255,0.5); font-size: 10px;">
+        This invoice was sent to {{to_name}} &mdash; ALPHA Ontario Construction &mdash; info@AlphaOntarioConstruction.ca
+      </span>
+    </div>
+
+  </div><!-- /paper -->
+</div>

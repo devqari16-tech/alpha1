@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALPHA Ontario Construction – Building & Restoration Experts</title>
+  <meta name="description" content="Over 14 years of experience in building & structure restoration, parking garage restoration, balcony repair, masonry and concrete repair across Ontario." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/alphalogo.png" alt="ALPHA Ontario Construction" class="logo-img" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="dashboard.html" class="nav-cta">Dashboard</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fa-solid fa-star"></i> Ontario's Trusted Restoration Experts</div>
+      <h1>Building &amp; Structure<br><span>Restoration Experts</span></h1>
+      <p class="hero-sub">Over 14 years of experience delivering high-quality restoration and construction services across Ontario. We build with precision. We restore with pride.</p>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn btn-primary">Get a Free Quote</a>
+        <a href="tel:4376030480" class="btn btn-outline"><i class="fa-solid fa-phone"></i> Call Now</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">14<span>+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">500<span>+</span></div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">24<span>/7</span></div>
+          <div class="stat-label">Emergency Service</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES PREVIEW -->
+<section class="services-preview" style="background:#F0F3F8;">
+  <div class="container">
+    <div class="center">
+      <span class="section-label">What We Do</span>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-sub">21 specialized services delivered with precision and professionalism across Ontario.</p>
+    </div>
+
+    <style>
+      .svc-img-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 22px;
+        margin-top: 40px;
+      }
+      .svc-img-card {
+        position: relative; border-radius: 16px; overflow: hidden;
+        aspect-ratio: 4/3; cursor: pointer;
+        box-shadow: 0 4px 20px rgba(30,42,56,0.14);
+        transition: transform 0.25s, box-shadow 0.25s;
+        display: block; text-decoration: none;
+      }
+      .svc-img-card:hover { transform: translateY(-5px); box-shadow: 0 10px 36px rgba(30,42,56,0.22); }
+      .svc-img-card img {
+        width: 100%; height: 100%; object-fit: cover; display: block;
+        transition: transform 0.4s;
+      }
+      .svc-img-card:hover img { transform: scale(1.06); }
+      .svc-img-card .svc-num {
+        position: absolute; top: 12px; left: 14px;
+        background: var(--red); color: #fff;
+        font-size: 0.78rem; font-weight: 800;
+        padding: 4px 10px; border-radius: 20px;
+        letter-spacing: 0.5px;
+      }
+      .svc-img-card .svc-label {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        background: linear-gradient(to top, rgba(18,26,38,0.95) 0%, rgba(18,26,38,0.6) 70%, transparent 100%);
+        padding: 40px 18px 18px;
+        color: #fff; font-size: 1rem; font-weight: 800;
+        text-align: center; letter-spacing: 0.3px;
+        text-transform: uppercase;
+      }
+      .svc-img-card.featured { grid-column: span 2; }
+      @media (max-width: 600px) { .svc-img-card.featured { grid-column: span 1; } }
+    </style>
+
+    <div class="svc-img-grid">
+      <!-- 01 -->
+      <a href="services.html#buildings" class="svc-img-card featured">
+        <img src="images/img1.jpg" alt="Buildings & Structures Restoration" loading="lazy" />
+        <span class="svc-num">01</span>
+        <div class="svc-label">Buildings &amp; Structures Restoration</div>
+      </a>
+      <!-- 02 -->
+      <a href="services.html#parking" class="svc-img-card featured">
+        <img src="images/img8.jpg" alt="Parking Garage Restoration" loading="lazy" />
+        <span class="svc-num">02</span>
+        <div class="svc-label">Parking Garage Restoration</div>
+      </a>
+      <!-- 03 -->
+      <a href="services.html#balcony" class="svc-img-card">
+        <img src="images/img22.jpg" alt="Balcony Restoration" loading="lazy" />
+        <span class="svc-num">03</span>
+        <div class="svc-label">Balcony Restoration</div>
+      </a>
+      <!-- 04 -->
+      <a href="services.html#waterproofing" class="svc-img-card">
+        <img src="images/img20.jpg" alt="Waterproofing & Sealants" loading="lazy" />
+        <span class="svc-num">04</span>
+        <div class="svc-label">Waterproofing &amp; Sealants</div>
+      </a>
+      <!-- 05 -->
+      <a href="services.html#masonry" class="svc-img-card">
+        <img src="images/img28.jpg" alt="Masonry & Concrete Repair" loading="lazy" />
+        <span class="svc-num">05</span>
+        <div class="svc-label">Masonry &amp; Concrete Repair</div>
+      </a>
+      <!-- 06 -->
+      <a href="services.html#roofing" class="svc-img-card">
+        <img src="images/img29.jpg" alt="Roof Rehabilitation" loading="lazy" />
+        <span class="svc-num">06</span>
+        <div class="svc-label">Roof Rehabilitation</div>
+      </a>
+      <!-- 07 -->
+      <a href="services.html#hydro" class="svc-img-card">
+        <img src="images/img10.jpg" alt="Hydro Demolition & Crack Injection" loading="lazy" />
+        <span class="svc-num">07</span>
+        <div class="svc-label">Hydro Demolition &amp; Crack Injection</div>
+      </a>
+      <!-- 08 -->
+      <a href="services.html#envelope" class="svc-img-card">
+        <img src="images/img16.jpg" alt="Building Envelope & Windows" loading="lazy" />
+        <span class="svc-num">08</span>
+        <div class="svc-label">Building Envelope &amp; Windows</div>
+      </a>
+      <!-- 09 -->
+      <a href="services.html#heritage" class="svc-img-card">
+        <img src="images/img7.jpg" alt="Heritage Building Restoration" loading="lazy" />
+        <span class="svc-num">09</span>
+        <div class="svc-label">Heritage Building Restoration</div>
+      </a>
+      <!-- 10 -->
+      <a href="services.html#site" class="svc-img-card">
+        <img src="images/img9.jpg" alt="Site Works & Accessibility" loading="lazy" />
+        <span class="svc-num">10</span>
+        <div class="svc-label">Site Works &amp; Accessibility</div>
+      </a>
+      <!-- 11 -->
+      <a href="services.html#fire" class="svc-img-card">
+        <img src="images/img12.jpg" alt="Fire & Smoke Restoration" loading="lazy" />
+        <span class="svc-num">11</span>
+        <div class="svc-label">Fire &amp; Smoke Restoration</div>
+      </a>
+      <!-- 12 -->
+      <a href="services.html#storm" class="svc-img-card">
+        <img src="images/img15.jpg" alt="Storm & Flood Restoration" loading="lazy" />
+        <span class="svc-num">12</span>
+        <div class="svc-label">Storm &amp; Flood Restoration</div>
+      </a>
+      <!-- 13 -->
+      <a href="services.html#vandalism" class="svc-img-card">
+        <img src="images/img2.jpg" alt="Vandalism Restoration" loading="lazy" />
+        <span class="svc-num">13</span>
+        <div class="svc-label">Vandalism Cleanup &amp; Restoration</div>
+      </a>
+    </div>
+
+    <div class="center" style="margin-top:36px;">
+      <a href="services.html" class="btn btn-primary">View All 21 Services <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-grid">
+        <img src="images/img7.jpg" alt="ALPHA Ontario Construction project" loading="lazy" />
+        <img src="images/img9.jpg" alt="Restoration work" loading="lazy" />
+        <img src="images/img12.jpg" alt="Building restoration" loading="lazy" />
+      </div>
+      <div class="about-text">
+        <span class="section-label">Who We Are</span>
+        <h2 class="section-title">Built on Trust &amp; Excellence</h2>
+        <p class="section-sub">With over 14 years of experience, ALPHA Ontario Construction specializes in restoring buildings, parking garages, balconies, and structural systems across Ontario.</p>
+        <div class="about-features">
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <p>Licensed and insured professionals with deep expertise in Ontario building codes and restoration standards</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <p>We use only premium-grade materials and proven methods to ensure long-lasting, durable results</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <p>Safety is our top priority — all projects are executed with strict adherence to safety protocols</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <p>From small repairs to large-scale restoration projects, we deliver on time and within budget</p>
+          </div>
+        </div>
+        <a href="about.html" class="btn btn-primary">About Our Company</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="container">
+    <div class="center">
+      <span class="section-label">Our Work</span>
+      <h2 class="section-title">Project Gallery</h2>
+      <p class="section-sub">Real projects. Real results. See the quality of our restoration work across Ontario.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item" data-lightbox>
+        <img src="images/img1.jpg" alt="Project 1" loading="lazy" />
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-lightbox>
+        <img src="images/img2.jpg" alt="Project 2" loading="lazy" />
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-lightbox>
+        <img src="images/img3.jpg" alt="Project 3" loading="lazy" />
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-lightbox>
+        <img src="images/img4.jpg" alt="Project 4" loading="lazy" />
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-lightbox>
+        <img src="images/img5.jpg" alt="Project 5" loading="lazy" />
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-lightbox>
+        <img src="images/img6.jpg" alt="Project 6" loading="lazy" />
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-lightbox>
+        <img src="images/img8.jpg" alt="Project 7" loading="lazy" />
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+      <div class="gallery-item" data-lightbox>
+        <img src="images/img10.jpg" alt="Project 8" loading="lazy" />
+        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+      </div>
+    </div>
+    <div class="center" style="margin-top:36px;">
+      <a href="projects.html" class="btn btn-outline" style="color:white;border-color:rgba(255,255,255,0.5);">View All Projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS SECTION -->
+<section class="videos-section" id="videos">
+  <div class="container">
+    <div class="center">
+      <span class="section-label">See Us In Action</span>
+      <h2 class="section-title">Project Videos</h2>
+      <p class="section-sub">Watch our team at work — delivering precision restoration and construction across Ontario.</p>
+    </div>
+
+    <style>
+      .videos-section { background: #F0F3F8; }
+      .videos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        margin-top: 44px;
+      }
+      .video-card {
+        background: #fff;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 6px 32px rgba(30,42,56,0.13);
+        transition: transform 0.28s, box-shadow 0.28s;
+      }
+      .video-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 48px rgba(30,42,56,0.20);
+      }
+      .video-card video {
+        width: 100%;
+        display: block;
+        background: #0d1721;
+        max-height: 340px;
+        object-fit: cover;
+      }
+      .video-card-body {
+        padding: 18px 22px 22px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .video-icon {
+        width: 44px; height: 44px;
+        background: var(--red);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+        color: #fff;
+        font-size: 1rem;
+      }
+      .video-meta h4 {
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--navy);
+        margin-bottom: 3px;
+      }
+      .video-meta p {
+        font-size: 0.82rem;
+        color: var(--gray);
+      }
+    </style>
+
+    <div class="videos-grid">
+      <div class="video-card">
+        <video controls preload="metadata" poster="">
+          <source src="videos/project-video-1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-card-body">
+          <div class="video-icon"><i class="fa-solid fa-play"></i></div>
+          <div class="video-meta">
+            <h4>Site Work Highlight</h4>
+            <p>ALPHA Ontario Construction — Live Project Footage</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <video controls preload="metadata" poster="">
+          <source src="videos/project-video-2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-card-body">
+          <div class="video-icon"><i class="fa-solid fa-play"></i></div>
+          <div class="video-meta">
+            <h4>Restoration in Progress</h4>
+            <p>ALPHA Ontario Construction — Live Project Footage</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Need Urgent Repair?</h2>
+        <p>We're available 24/7 for emergency structural and restoration services across Ontario.</p>
+      </div>
+      <div class="cta-btns">
+        <a href="tel:4376030480" class="btn btn-white"><i class="fa-solid fa-phone"></i> Emergency Call Now</a>
+        <a href="contact.html" class="btn btn-ghost">Request a Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo footer-brand-logo">
+          <img src="images/alphalogo.png" alt="ALPHA Ontario Construction" class="logo-img" />
+        </div>
+        <p class="footer-tagline">Over 14 years of trusted construction and restoration services across Ontario. Quality you can see. Strength you can count on.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html">Building Restoration</a></li>
+          <li><a href="services.html">Parking Garage</a></li>
+          <li><a href="services.html">Balcony Repair</a></li>
+          <li><a href="services.html">Waterproofing</a></li>
+          <li><a href="services.html">Masonry &amp; Concrete</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-list">
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <a href="tel:4376030480" style="color:rgba(255,255,255,0.55);">(437) 60 30 48</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:info@alphaontarioconstruction.ca" style="color:rgba(255,255,255,0.55);">info@alphaontarioconstruction.ca</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Ontario, Canada</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-clock"></i>
+            <span>Mon–Fri: 7am–6pm<br>Emergency: 24/7</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ALPHA Ontario Construction. All rights reserved. | Licensed &amp; Insured in Ontario</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile Call Button -->
+<a href="tel:4376030480" class="mobile-call-btn" aria-label="Call Now"><i class="fa-solid fa-phone"></i></a>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close"><i class="fa-solid fa-xmark"></i></button>
+  <img id="lightbox-img" src="" alt="Project image" />
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

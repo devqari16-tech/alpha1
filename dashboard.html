@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard – ALPHA Ontario Construction</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ---- LOGIN OVERLAY ---- */
+    #login-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+    }
+    #login-overlay.hidden { display: none; }
+    .login-card {
+      background: #fff; border-radius: 16px;
+      padding: 48px 44px; width: 100%; max-width: 420px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      text-align: center;
+    }
+    .login-card .login-logo { margin: 0 auto 24px; width: 130px; }
+    .login-card h2 { color: var(--navy); font-size: 1.55rem; margin-bottom: 6px; }
+    .login-card p { color: var(--gray); font-size: 0.93rem; margin-bottom: 28px; }
+    .login-field { text-align: left; margin-bottom: 18px; }
+    .login-field label { display: block; font-weight: 700; color: var(--navy); font-size: 0.88rem; margin-bottom: 6px; letter-spacing: 0.5px; }
+    .login-field input {
+      width: 100%; padding: 12px 16px; border: 1.5px solid #DDE3EE;
+      border-radius: 8px; font-size: 0.97rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    .login-field input:focus { border-color: var(--navy); }
+    .login-error { color: var(--red); font-size: 0.88rem; margin-bottom: 14px; display: none; }
+    .login-btn {
+      width: 100%; padding: 14px; background: var(--navy); color: #fff;
+      border: none; border-radius: 8px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s, transform 0.15s;
+    }
+    .login-btn:hover { background: var(--red); transform: translateY(-1px); }
+    .login-hint { margin-top: 18px; font-size: 0.8rem; color: var(--gray); }
+
+    /* ---- DASHBOARD LAYOUT ---- */
+    #dashboard-content.hidden { display: none; }
+    .dash-shell { display: flex; min-height: 100vh; }
+
+    /* Sidebar */
+    .dash-sidebar {
+      width: 250px; min-width: 250px; background: var(--navy);
+      display: flex; flex-direction: column;
+      position: fixed; top: 0; left: 0; height: 100vh; z-index: 100;
+      transition: transform 0.3s;
+    }
+    .dash-sidebar .sidebar-logo {
+      padding: 28px 24px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .dash-sidebar .sidebar-logo img { width: 120px; }
+    .sidebar-nav { flex: 1; padding: 16px 0; overflow-y: auto; }
+    .sidebar-nav a {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 24px; color: rgba(255,255,255,0.65);
+      font-size: 0.93rem; font-weight: 600; transition: all 0.2s;
+      border-left: 3px solid transparent;
+    }
+    .sidebar-nav a:hover, .sidebar-nav a.active {
+      color: #fff; background: rgba(255,255,255,0.07);
+      border-left-color: var(--red);
+    }
+    .sidebar-nav a i { width: 18px; text-align: center; font-size: 1rem; }
+    .sidebar-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 8px 24px; }
+    .sidebar-bottom { padding: 16px 24px 28px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .sidebar-logout {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.55); font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; transition: color 0.2s;
+    }
+    .sidebar-logout:hover { color: var(--red); }
+
+    /* Main area */
+    .dash-main { margin-left: 250px; flex: 1; background: #F0F3F8; min-height: 100vh; }
+    .dash-topbar {
+      background: #fff; padding: 18px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 1px 8px rgba(30,42,56,0.07);
+      position: sticky; top: 0; z-index: 50;
+    }
+    .dash-topbar-left h3 { color: var(--navy); font-size: 1.15rem; }
+    .dash-topbar-left p { color: var(--gray); font-size: 0.83rem; }
+    .dash-topbar-right { display: flex; align-items: center; gap: 16px; }
+    .topbar-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--navy); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.95rem;
+    }
+
+    .dash-body { padding: 32px; }
+
+    /* Stats cards */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 32px; }
+    .stat-card {
+      background: #fff; border-radius: 14px; padding: 24px;
+      box-shadow: 0 2px 12px rgba(30,42,56,0.07);
+      display: flex; align-items: center; gap: 18px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(30,42,56,0.12); }
+    .stat-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .stat-icon.navy { background: rgba(30,42,56,0.09); color: var(--navy); }
+    .stat-icon.red { background: rgba(229,57,53,0.1); color: var(--red); }
+    .stat-icon.green { background: rgba(34,197,94,0.12); color: #16a34a; }
+    .stat-icon.orange { background: rgba(249,115,22,0.12); color: #ea580c; }
+    .stat-info .stat-value { font-size: 1.75rem; font-weight: 800; color: var(--navy); line-height: 1; }
+    .stat-info .stat-label { font-size: 0.82rem; color: var(--gray); margin-top: 4px; }
+    .stat-info .stat-change { font-size: 0.78rem; font-weight: 700; margin-top: 4px; }
+    .stat-change.up { color: #16a34a; }
+    .stat-change.down { color: var(--red); }
+
+    /* Quick actions */
+    .dash-row { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 24px; }
+    @media (max-width: 900px) { .dash-row { grid-template-columns: 1fr; } }
+
+    .dash-card {
+      background: #fff; border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(30,42,56,0.07); overflow: hidden;
+    }
+    .dash-card-header {
+      padding: 20px 24px 14px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid #F0F3F8;
+    }
+    .dash-card-header h4 { color: var(--navy); font-size: 1rem; }
+    .dash-card-header a { font-size: 0.82rem; color: var(--red); font-weight: 700; }
+    .dash-card-body { padding: 20px 24px; }
+
+    /* Recent invoices table */
+    .inv-table { width: 100%; border-collapse: collapse; }
+    .inv-table th { font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.8px; padding: 0 12px 10px 0; text-align: left; }
+    .inv-table td { padding: 12px 12px 12px 0; border-top: 1px solid #F0F3F8; font-size: 0.88rem; color: var(--navy); }
+    .inv-table tr:first-child td { border-top: none; }
+    .badge {
+      display: inline-block; padding: 3px 10px; border-radius: 20px;
+      font-size: 0.75rem; font-weight: 700;
+    }
+    .badge-paid { background: #dcfce7; color: #16a34a; }
+    .badge-pending { background: #fef3c7; color: #d97706; }
+    .badge-overdue { background: #fee2e2; color: #c62828; }
+    .badge-draft { background: #f1f5f9; color: #64748b; }
+    .empty-state { text-align: center; padding: 32px 16px; color: var(--gray); }
+    .empty-state i { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4; display: block; }
+
+    /* Quick actions list */
+    .quick-actions { display: flex; flex-direction: column; gap: 10px; }
+    .qa-btn {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px; border-radius: 10px; border: none;
+      cursor: pointer; font-size: 0.9rem; font-weight: 700;
+      transition: all 0.2s; text-decoration: none; width: 100%;
+    }
+    .qa-btn i { width: 20px; text-align: center; font-size: 1.05rem; }
+    .qa-btn.navy { background: var(--navy); color: #fff; }
+    .qa-btn.navy:hover { background: var(--navy-light); transform: translateX(3px); }
+    .qa-btn.red { background: var(--red); color: #fff; }
+    .qa-btn.red:hover { background: var(--red-dark); transform: translateX(3px); }
+    .qa-btn.outline { background: #F0F3F8; color: var(--navy); border: 1.5px solid #DDE3EE; }
+    .qa-btn.outline:hover { background: #e6eaf0; transform: translateX(3px); }
+
+    /* Activity feed */
+    .activity-list { display: flex; flex-direction: column; gap: 0; }
+    .activity-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0; border-bottom: 1px solid #F0F3F8;
+    }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-dot {
+      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+    }
+    .activity-dot.green { background: #dcfce7; color: #16a34a; }
+    .activity-dot.navy { background: rgba(30,42,56,0.09); color: var(--navy); }
+    .activity-dot.red { background: #fee2e2; color: var(--red); }
+    .activity-text { font-size: 0.86rem; color: var(--navy); font-weight: 600; line-height: 1.4; }
+    .activity-time { font-size: 0.78rem; color: var(--gray); margin-top: 2px; }
+
+    /* Summary row */
+    .summary-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .summary-item { text-align: center; padding: 18px 12px; border-radius: 10px; background: #F0F3F8; }
+    .summary-item .s-value { font-size: 1.3rem; font-weight: 800; color: var(--navy); }
+    .summary-item .s-label { font-size: 0.78rem; color: var(--gray); margin-top: 4px; }
+
+    /* Sidebar hamburger for mobile */
+    .sidebar-toggle {
+      display: none; position: fixed; top: 16px; left: 16px; z-index: 200;
+      background: var(--navy); color: #fff; border: none; border-radius: 8px;
+      width: 40px; height: 40px; cursor: pointer; font-size: 1.1rem;
+      align-items: center; justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .dash-sidebar { transform: translateX(-100%); }
+      .dash-sidebar.open { transform: translateX(0); }
+      .dash-main { margin-left: 0; }
+      .sidebar-toggle { display: flex; }
+      .dash-topbar { padding: 14px 16px 14px 64px; }
+      .dash-body { padding: 20px 16px; }
+    }
+
+    /* Page sections */
+    .dash-page { display: none; }
+    .dash-page.active { display: block; }
+    .page-title { font-size: 1.5rem; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+    .page-sub { color: var(--gray); font-size: 0.9rem; margin-bottom: 28px; }
+  </style>
+</head>
+<body>
+
+<!-- ==================== LOGIN OVERLAY ==================== -->
+<div id="login-overlay">
+  <div class="login-card">
+    <img src="images/alphalogo.png" alt="ALPHA" class="login-logo" />
+    <h2>Welcome Back</h2>
+    <p>Sign in to access the ALPHA dashboard</p>
+
+    <div class="login-field">
+      <label>Username</label>
+      <input type="text" id="login-user" placeholder="Enter username" autocomplete="username" />
+    </div>
+    <div class="login-field">
+      <label>Password</label>
+      <input type="password" id="login-pass" placeholder="Enter password" autocomplete="current-password" />
+    </div>
+    <div class="login-error" id="login-error"><i class="fa-solid fa-circle-exclamation"></i> Incorrect username or password.</div>
+    <button class="login-btn" onclick="attemptLogin()">Sign In <i class="fa-solid fa-arrow-right" style="margin-left:6px;"></i></button>
+    <p class="login-hint">Internal use only &mdash; ALPHA Ontario Construction</p>
+  </div>
+</div>
+
+<!-- ==================== DASHBOARD SHELL ==================== -->
+<div id="dashboard-content" class="hidden">
+
+  <!-- Sidebar toggle (mobile) -->
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <!-- SIDEBAR -->
+  <aside class="dash-sidebar" id="dash-sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html"><img src="images/alphalogo.png" alt="ALPHA Ontario Construction" /></a>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="active" onclick="showPage('overview', this)">
+        <i class="fa-solid fa-gauge-high"></i> Overview
+      </a>
+      <a href="#" onclick="showPage('invoices', this)">
+        <i class="fa-solid fa-file-invoice-dollar"></i> Invoices
+      </a>
+      <a href="#" onclick="showPage('clients', this)">
+        <i class="fa-solid fa-users"></i> Clients
+      </a>
+      <a href="#" onclick="showPage('projects-dash', this)">
+        <i class="fa-solid fa-hard-hat"></i> Projects
+      </a>
+      <div class="sidebar-divider"></div>
+      <a href="index.html">
+        <i class="fa-solid fa-globe"></i> View Website
+      </a>
+      <a href="contact.html">
+        <i class="fa-solid fa-envelope"></i> Contact Form
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="sidebar-logout" onclick="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="dash-main">
+
+    <!-- Top Bar -->
+    <div class="dash-topbar">
+      <div class="dash-topbar-left">
+        <h3 id="topbar-title">Overview</h3>
+        <p id="topbar-date"></p>
+      </div>
+      <div class="dash-topbar-right">
+        <a href="invoices.html" class="btn btn-sm btn-primary" style="padding:10px 20px;font-size:0.85rem;"><i class="fa-solid fa-plus"></i> New Invoice</a>
+        <div class="topbar-avatar" title="Logged in">A</div>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="dash-body">
+
+      <!-- ===== OVERVIEW PAGE ===== -->
+      <div class="dash-page active" id="page-overview">
+        <p class="page-title">Dashboard Overview</p>
+        <p class="page-sub">Welcome back. Here's what's happening with your business.</p>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon navy"><i class="fa-solid fa-file-invoice"></i></div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-total-inv">0</div>
+              <div class="stat-label">Total Invoices</div>
+              <div class="stat-change up" id="stat-inv-change"></div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fa-solid fa-dollar-sign"></i></div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-revenue">$0</div>
+              <div class="stat-label">Total Revenue</div>
+              <div class="stat-change up" id="stat-rev-change"></div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange"><i class="fa-solid fa-clock"></i></div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-pending">0</div>
+              <div class="stat-label">Pending</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div class="stat-info">
+              <div class="stat-value" id="stat-overdue">0</div>
+              <div class="stat-label">Overdue</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row: Recent Invoices + Quick Actions -->
+        <div class="dash-row">
+          <!-- Recent invoices -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h4><i class="fa-solid fa-file-invoice-dollar" style="color:var(--navy);margin-right:8px;"></i> Recent Invoices</h4>
+              <a href="#" onclick="showPage('invoices', document.querySelector('.sidebar-nav a:nth-child(2)'))">View All</a>
+            </div>
+            <div class="dash-card-body" style="padding:0 24px;">
+              <div id="recent-invoices-wrap">
+                <div class="empty-state"><i class="fa-regular fa-file-lines"></i>No invoices yet.<br><small>Create your first invoice to see it here.</small></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick actions -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h4><i class="fa-solid fa-bolt" style="color:var(--red);margin-right:8px;"></i> Quick Actions</h4>
+            </div>
+            <div class="dash-card-body">
+              <div class="quick-actions">
+                <a href="invoices.html" class="qa-btn navy"><i class="fa-solid fa-plus"></i> New Invoice</a>
+                <a href="#" class="qa-btn red" onclick="showPage('invoices', null)"><i class="fa-solid fa-file-invoice-dollar"></i> View Invoices</a>
+                <a href="tel:4376030480" class="qa-btn outline"><i class="fa-solid fa-phone"></i> Call Office</a>
+                <a href="mailto:info@alphaontarioconstruction.ca" class="qa-btn outline"><i class="fa-solid fa-envelope"></i> Send Email</a>
+                <a href="contact.html" class="qa-btn outline"><i class="fa-solid fa-message"></i> Contact Form</a>
+                <a href="index.html" target="_blank" class="qa-btn outline"><i class="fa-solid fa-globe"></i> View Website</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Revenue Summary -->
+        <div class="dash-card" style="margin-bottom:24px;">
+          <div class="dash-card-header">
+            <h4><i class="fa-solid fa-chart-pie" style="color:var(--navy);margin-right:8px;"></i> Revenue Summary</h4>
+          </div>
+          <div class="dash-card-body">
+            <div class="summary-grid">
+              <div class="summary-item">
+                <div class="s-value" id="sum-paid">$0.00</div>
+                <div class="s-label">Collected (Paid)</div>
+              </div>
+              <div class="summary-item">
+                <div class="s-value" id="sum-pending">$0.00</div>
+                <div class="s-label">Outstanding</div>
+              </div>
+              <div class="summary-item">
+                <div class="s-value" id="sum-overdue">$0.00</div>
+                <div class="s-label">Overdue</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h4><i class="fa-solid fa-clock-rotate-left" style="color:var(--navy);margin-right:8px;"></i> Recent Activity</h4>
+          </div>
+          <div class="dash-card-body" style="padding:0 24px;">
+            <div class="activity-list" id="activity-list">
+              <div class="activity-item">
+                <div class="activity-dot navy"><i class="fa-solid fa-right-to-bracket"></i></div>
+                <div>
+                  <div class="activity-text">You signed into the dashboard</div>
+                  <div class="activity-time" id="login-time-display"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /overview page -->
+
+      <!-- ===== INVOICES PAGE ===== -->
+      <div class="dash-page" id="page-invoices">
+        <p class="page-title">Invoices</p>
+        <p class="page-sub">Manage and track all your invoices.</p>
+
+        <div style="display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+          <a href="invoices.html" class="btn btn-navy btn-sm"><i class="fa-solid fa-plus"></i> New Invoice</a>
+          <select id="inv-filter" style="padding:10px 14px;border:1.5px solid #DDE3EE;border-radius:8px;font-size:0.88rem;color:var(--navy);background:#fff;cursor:pointer;" onchange="renderInvoiceList()">
+            <option value="all">All Invoices</option>
+            <option value="draft">Draft</option>
+            <option value="pending">Pending</option>
+            <option value="paid">Paid</option>
+            <option value="overdue">Overdue</option>
+          </select>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-body" style="padding:0;">
+            <div id="full-invoice-list">
+              <div class="empty-state" style="padding:48px;"><i class="fa-regular fa-file-lines"></i>No invoices yet.<br><small>Click <strong>New Invoice</strong> to create one.</small></div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /invoices page -->
+
+      <!-- ===== CLIENTS PAGE ===== -->
+      <div class="dash-page" id="page-clients">
+        <p class="page-title">Clients</p>
+        <p class="page-sub">All clients extracted from your invoices.</p>
+
+        <div class="dash-card">
+          <div class="dash-card-body" style="padding:0;">
+            <div id="clients-list">
+              <div class="empty-state" style="padding:48px;"><i class="fa-solid fa-users"></i>No clients yet.<br><small>Clients appear here automatically when you create invoices.</small></div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /clients page -->
+
+      <!-- ===== PROJECTS PAGE ===== -->
+      <div class="dash-page" id="page-projects-dash">
+        <p class="page-title">Projects</p>
+        <p class="page-sub">Projects listed from your invoices by site address.</p>
+
+        <div style="display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+          <a href="projects.html" target="_blank" class="btn btn-navy btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Public Portfolio</a>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-body" style="padding:0;">
+            <div id="projects-list">
+              <div class="empty-state" style="padding:48px;"><i class="fa-solid fa-hard-hat"></i>No projects yet.<br><small>Projects appear here automatically from invoice addresses.</small></div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /projects page -->
+
+    </div><!-- /dash-body -->
+  </div><!-- /dash-main -->
+</div><!-- /dashboard-content -->
+
+<script>
+  /* ============================================================
+     AUTH
+  ============================================================ */
+  const CREDENTIALS = { username: 'alpha', password: 'Alpha2024' };
+
+  function attemptLogin() {
+    const user = document.getElementById('login-user').value.trim();
+    const pass = document.getElementById('login-pass').value;
+    const err = document.getElementById('login-error');
+    if (user === CREDENTIALS.username && pass === CREDENTIALS.password) {
+      sessionStorage.setItem('alpha_auth', '1');
+      sessionStorage.setItem('alpha_login_time', new Date().toISOString());
+      showDashboard();
+    } else {
+      err.style.display = 'block';
+      document.getElementById('login-pass').value = '';
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !document.getElementById('login-overlay').classList.contains('hidden')) {
+      attemptLogin();
+    }
+  });
+
+  function logout() {
+    sessionStorage.removeItem('alpha_auth');
+    document.getElementById('dashboard-content').classList.add('hidden');
+    document.getElementById('login-overlay').classList.remove('hidden');
+    document.getElementById('login-user').value = '';
+    document.getElementById('login-pass').value = '';
+  }
+
+  function showDashboard() {
+    document.getElementById('login-overlay').classList.add('hidden');
+    document.getElementById('dashboard-content').classList.remove('hidden');
+    initDashboard();
+  }
+
+  /* Auto-login if session exists */
+  window.addEventListener('DOMContentLoaded', () => {
+    if (sessionStorage.getItem('alpha_auth') === '1') {
+      showDashboard();
+    }
+  });
+
+  /* ============================================================
+     NAVIGATION
+  ============================================================ */
+  function showPage(pageId, clickedLink) {
+    document.querySelectorAll('.dash-page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+    const page = document.getElementById('page-' + pageId);
+    if (page) page.classList.add('active');
+    if (clickedLink) clickedLink.classList.add('active');
+    const titles = { overview: 'Overview', invoices: 'Invoices', clients: 'Clients', 'projects-dash': 'Projects' };
+    document.getElementById('topbar-title').textContent = titles[pageId] || 'Dashboard';
+    if (pageId === 'invoices') renderInvoiceList();
+    if (pageId === 'clients') renderClientList();
+    if (pageId === 'projects-dash') renderProjectsList();
+    closeSidebar();
+    return false;
+  }
+
+  function toggleSidebar() {
+    document.getElementById('dash-sidebar').classList.toggle('open');
+  }
+  function closeSidebar() {
+    document.getElementById('dash-sidebar').classList.remove('open');
+  }
+
+  /* ============================================================
+     INVOICE DATA (localStorage)
+  ============================================================ */
+  function getInvoices() {
+    try { return JSON.parse(localStorage.getItem('alpha_invoices') || '[]'); } catch(e) { return []; }
+  }
+  function saveInvoices(arr) {
+    localStorage.setItem('alpha_invoices', JSON.stringify(arr));
+  }
+
+  /* ============================================================
+     INIT DASHBOARD
+  ============================================================ */
+  function initDashboard() {
+    // Date
+    const now = new Date();
+    document.getElementById('topbar-date').textContent = now.toLocaleDateString('en-CA', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+    document.getElementById('login-time-display').textContent = now.toLocaleTimeString('en-CA', { hour:'2-digit', minute:'2-digit' });
+
+    updateStats();
+    renderRecentInvoices();
+  }
+
+  function updateStats() {
+    const invs = getInvoices();
+    const pending = invs.filter(i => i.status === 'pending');
+    const overdue = invs.filter(i => i.status === 'overdue');
+    const paid = invs.filter(i => i.status === 'paid');
+
+    const totalRev = invs.reduce((s,i) => s + (parseFloat(i.total)||0), 0);
+    const paidRev = paid.reduce((s,i) => s + (parseFloat(i.total)||0), 0);
+    const pendingRev = pending.reduce((s,i) => s + (parseFloat(i.total)||0), 0);
+    const overdueRev = overdue.reduce((s,i) => s + (parseFloat(i.total)||0), 0);
+
+    document.getElementById('stat-total-inv').textContent = invs.length;
+    document.getElementById('stat-revenue').textContent = '$' + totalRev.toLocaleString('en-CA', {minimumFractionDigits:0, maximumFractionDigits:0});
+    document.getElementById('stat-pending').textContent = pending.length;
+    document.getElementById('stat-overdue').textContent = overdue.length;
+
+    document.getElementById('sum-paid').textContent = '$' + paidRev.toFixed(2);
+    document.getElementById('sum-pending').textContent = '$' + pendingRev.toFixed(2);
+    document.getElementById('sum-overdue').textContent = '$' + overdueRev.toFixed(2);
+  }
+
+  function renderRecentInvoices() {
+    const invs = getInvoices().slice(-5).reverse();
+    const wrap = document.getElementById('recent-invoices-wrap');
+    if (!invs.length) {
+      wrap.innerHTML = '<div class="empty-state"><i class="fa-regular fa-file-lines"></i>No invoices yet.<br><small>Create your first invoice to see it here.</small></div>';
+      return;
+    }
+    wrap.innerHTML = `<table class="inv-table" style="width:100%;">
+      <thead><tr>
+        <th>Invoice #</th><th>Client</th><th>Total</th><th>Status</th>
+      </tr></thead>
+      <tbody>${invs.map(inv => `
+        <tr>
+          <td><strong>${inv.number || '—'}</strong></td>
+          <td>${inv.clientName || '—'}</td>
+          <td>$${parseFloat(inv.total||0).toFixed(2)}</td>
+          <td>${badgeHTML(inv.status)}</td>
+        </tr>`).join('')}
+      </tbody></table>`;
+  }
+
+  function renderInvoiceList() {
+    const filter = document.getElementById('inv-filter')?.value || 'all';
+    let invs = getInvoices();
+    if (filter !== 'all') invs = invs.filter(i => i.status === filter);
+    invs = invs.reverse();
+    const wrap = document.getElementById('full-invoice-list');
+    if (!invs.length) {
+      wrap.innerHTML = '<div class="empty-state" style="padding:48px;"><i class="fa-regular fa-file-lines"></i>No invoices found.<br><small>Create one using the New Invoice button.</small></div>';
+      return;
+    }
+    wrap.innerHTML = `<table class="inv-table" style="width:100%;padding:0 24px;">
+      <thead style="background:#F0F3F8;"><tr>
+        <th style="padding:14px 16px;">Invoice #</th>
+        <th style="padding:14px 16px;">Client</th>
+        <th style="padding:14px 16px;">Date</th>
+        <th style="padding:14px 16px;">Due</th>
+        <th style="padding:14px 16px;">Total</th>
+        <th style="padding:14px 16px;">Status</th>
+        <th style="padding:14px 16px;">Actions</th>
+      </tr></thead>
+      <tbody>${invs.map((inv,idx) => {
+        const realIdx = getInvoices().findIndex(i => i.id === inv.id);
+        return `<tr>
+          <td style="padding:14px 16px;"><strong>${inv.number || '—'}</strong></td>
+          <td style="padding:14px 16px;">${inv.clientName || '—'}</td>
+          <td style="padding:14px 16px;">${inv.date || '—'}</td>
+          <td style="padding:14px 16px;">${inv.dueDate || '—'}</td>
+          <td style="padding:14px 16px;"><strong>$${parseFloat(inv.total||0).toFixed(2)}</strong></td>
+          <td style="padding:14px 16px;">${badgeHTML(inv.status)}</td>
+          <td style="padding:14px 16px;">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <select onchange="changeStatus(${realIdx}, this.value)" style="padding:5px 8px;border:1px solid #DDE3EE;border-radius:6px;font-size:0.78rem;cursor:pointer;">
+                <option value="draft" ${inv.status==='draft'?'selected':''}>Draft</option>
+                <option value="pending" ${inv.status==='pending'?'selected':''}>Pending</option>
+                <option value="paid" ${inv.status==='paid'?'selected':''}>Paid</option>
+                <option value="overdue" ${inv.status==='overdue'?'selected':''}>Overdue</option>
+              </select>
+              <button onclick="deleteInvoice(${realIdx})" style="padding:5px 10px;border:none;background:#fee2e2;color:#c62828;border-radius:6px;cursor:pointer;font-size:0.78rem;font-weight:700;"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </td>
+        </tr>`;
+      }).join('')}
+      </tbody></table>`;
+  }
+
+  function changeStatus(idx, status) {
+    const invs = getInvoices();
+    if (invs[idx]) { invs[idx].status = status; saveInvoices(invs); }
+    updateStats();
+    renderRecentInvoices();
+  }
+
+  function deleteInvoice(idx) {
+    if (!confirm('Delete this invoice? This cannot be undone.')) return;
+    const invs = getInvoices();
+    invs.splice(idx, 1);
+    saveInvoices(invs);
+    renderInvoiceList();
+    updateStats();
+    renderRecentInvoices();
+  }
+
+  function renderClientList() {
+    const invs = getInvoices();
+    const clientMap = {};
+    invs.forEach(inv => {
+      const name = inv.clientName || 'Unknown';
+      if (!clientMap[name]) clientMap[name] = { name, count: 0, total: 0, contact: inv.clientContact || '' };
+      clientMap[name].count++;
+      clientMap[name].total += parseFloat(inv.total || 0);
+    });
+    const clients = Object.values(clientMap);
+    const wrap = document.getElementById('clients-list');
+    if (!clients.length) {
+      wrap.innerHTML = '<div class="empty-state" style="padding:48px;"><i class="fa-solid fa-users"></i>No clients yet.</div>';
+      return;
+    }
+    wrap.innerHTML = `<table class="inv-table" style="width:100%;">
+      <thead style="background:#F0F3F8;"><tr>
+        <th style="padding:14px 16px;">Client Name</th>
+        <th style="padding:14px 16px;">Contact</th>
+        <th style="padding:14px 16px;">Invoices</th>
+        <th style="padding:14px 16px;">Total Billed</th>
+      </tr></thead>
+      <tbody>${clients.map(c => `<tr>
+        <td style="padding:14px 16px;"><strong>${c.name}</strong></td>
+        <td style="padding:14px 16px;">${c.contact || '—'}</td>
+        <td style="padding:14px 16px;">${c.count}</td>
+        <td style="padding:14px 16px;"><strong>$${c.total.toFixed(2)}</strong></td>
+      </tr>`).join('')}</tbody></table>`;
+  }
+
+  function renderProjectsList() {
+    const invs = getInvoices();
+    const projMap = {};
+    invs.forEach(inv => {
+      const addr = inv.address || 'No Address';
+      if (!projMap[addr]) projMap[addr] = { addr, count: 0, clients: new Set() };
+      projMap[addr].count++;
+      if (inv.clientName) projMap[addr].clients.add(inv.clientName);
+    });
+    const projs = Object.values(projMap);
+    const wrap = document.getElementById('projects-list');
+    if (!projs.length) {
+      wrap.innerHTML = '<div class="empty-state" style="padding:48px;"><i class="fa-solid fa-hard-hat"></i>No projects yet.</div>';
+      return;
+    }
+    wrap.innerHTML = `<table class="inv-table" style="width:100%;">
+      <thead style="background:#F0F3F8;"><tr>
+        <th style="padding:14px 16px;">Site Address</th>
+        <th style="padding:14px 16px;">Client(s)</th>
+        <th style="padding:14px 16px;">Invoices</th>
+      </tr></thead>
+      <tbody>${projs.map(p => `<tr>
+        <td style="padding:14px 16px;"><strong>${p.addr}</strong></td>
+        <td style="padding:14px 16px;">${[...p.clients].join(', ') || '—'}</td>
+        <td style="padding:14px 16px;">${p.count}</td>
+      </tr>`).join('')}</tbody></table>`;
+  }
+
+  function badgeHTML(status) {
+    const map = {
+      paid: 'badge-paid', pending: 'badge-pending',
+      overdue: 'badge-overdue', draft: 'badge-draft'
+    };
+    const labels = { paid:'Paid', pending:'Pending', overdue:'Overdue', draft:'Draft' };
+    const cls = map[status] || 'badge-draft';
+    return `<span class="badge ${cls}">${labels[status] || status || 'Draft'}</span>`;
+  }
+</script>
+</body>
+</html>

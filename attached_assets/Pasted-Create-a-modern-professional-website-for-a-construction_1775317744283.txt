@@ -1,0 +1,129 @@
+Create a modern, professional website for a construction and restoration company called:
+
+ALPHA Ontario Construction
+
+STYLE:
+- Clean, high-end, corporate look
+- Colors: Red (#E53935), Navy Blue (#1E2A38), White
+- Strong bold typography
+- Minimal but powerful design
+- Use subtle shadows and spacing (premium feel)
+- Fully responsive (mobile + desktop)
+
+LOGO:
+- Use the ALPHA logo centered at the top (not left/right)
+- Logo should be clean, high resolution, and prominent
+
+---
+
+PAGES & STRUCTURE:
+
+1. HOME PAGE
+- Hero Section:
+  - Big headline: "Building & Structure Restoration Experts"
+  - Subtext: "Over 14 years of experience delivering high-quality restoration and construction services across Ontario."
+  - CTA Buttons:
+    - "Get a Quote"
+    - "Call Now"
+
+- Services Preview Cards:
+  - Buildings & Structures Restoration
+  - Parking Garage Restoration
+  - Balcony Repair & Waterproofing
+  - Masonry & Concrete Repair
+
+- About Section:
+  - "With over 14 years of experience, ALPHA Ontario Construction specializes in restoring buildings, parking garages, balconies, and structural systems."
+
+- Image Gallery:
+  - Show real project images (buildings, balconies, repairs)
+  - Clean grid layout
+
+- CTA Section:
+  - "Need urgent repair?"
+  - Button: "Emergency Call Now"
+
+---
+
+2. SERVICES PAGE
+Create clean sections for each:
+
+- Buildings & Structures Restoration
+- Parking Garage Restoration
+- Balcony Restoration
+- Waterproofing & Sealants
+- Masonry & Concrete Repair
+
+Each service includes:
+- Short description
+- Bullet points of what’s included
+- Image
+
+---
+
+3. PROJECTS / PORTFOLIO
+- Grid gallery of past work
+- Before/after style images if possible
+- Clean modern layout
+
+---
+
+4. ABOUT PAGE
+- Company story
+- "Over 14 years experience"
+- Focus on quality, reliability, safety
+
+---
+
+5. CONTACT PAGE
+- Phone: (437) 60 30 48
+- Email: (create a simple one like: info@alphaontarioconstruction.ca)
+- Contact form:
+  - Name
+  - Phone
+  - Email
+  - Message
+
+- Add CTA:
+  - "Request a Quote"
+
+---
+
+6. INVOICE / ONLINE BILLING PAGE
+- Simple clean invoice form:
+  - Client Name
+  - Description
+  - Amount
+  - Tax
+  - Total
+
+---
+
+DESIGN DETAILS:
+- Center everything properly (no side-heavy layouts)
+- Use consistent spacing
+- Use card-style sections
+- Smooth scrolling
+- Hover effects on buttons
+
+---
+
+EXTRA FEATURES:
+- Sticky navigation bar
+- Call button on mobile
+- Fast loading
+- SEO-friendly headings
+
+---
+
+TONE:
+- Professional
+- Trustworthy
+- Strong construction brand
+
+---
+
+OUTPUT:
+- Full website code (HTML, CSS, JS) OR
+- Ready-to-use Webflow/Framer structure
+- Clean and organized

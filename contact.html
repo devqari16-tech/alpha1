@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact – ALPHA Ontario Construction</title>
+  <meta name="description" content="Contact ALPHA Ontario Construction for a free quote. Phone: (437) 60 30 48. Email: info@alphaontarioconstruction.ca. Serving all of Ontario." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/alphalogo.png" alt="ALPHA Ontario Construction" class="logo-img" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="dashboard.html" class="nav-cta">Dashboard</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <span class="section-label">Get In Touch</span>
+    <h1>Contact Us</h1>
+    <p>Ready to start your project? Get a free consultation and estimate today.</p>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> <span>/</span> <span>Contact</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<section style="background:var(--light-gray);">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3>Reach Out to Us</h3>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:4376030480">(437) 60 30 48</a>
+              <p style="font-size:0.83rem;margin-top:3px;">Mon–Fri: 7am–6pm | Emergency: 24/7</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:info@alphaontarioconstruction.ca">info@alphaontarioconstruction.ca</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <h4>Service Area</h4>
+              <p>Serving all of Ontario, Canada</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+            <div>
+              <h4>Business Hours</h4>
+              <p>Monday – Friday: 7:00 AM – 6:00 PM<br>Saturday: 8:00 AM – 2:00 PM<br>Emergency Service: Available 24/7</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Emergency CTA -->
+        <div style="margin-top:36px;background:var(--red);border-radius:12px;padding:28px;text-align:center;">
+          <div style="font-size:2rem;margin-bottom:10px;color:white;">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <h3 style="color:white;margin-bottom:8px;">Emergency Repair?</h3>
+          <p style="color:rgba(255,255,255,0.85);font-size:0.93rem;margin-bottom:18px;">Structural emergencies can't wait. Call us immediately for 24/7 urgent response.</p>
+          <a href="tel:4376030480" class="btn btn-white" style="display:inline-flex;"><i class="fa-solid fa-phone"></i> Call Emergency Line</a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="form-card">
+        <h3>Request a Free Quote</h3>
+        <div id="form-success" class="form-success">
+          <i class="fa-solid fa-circle-check"></i> Thank you! We've received your message and will get back to you within 24 hours.
+        </div>
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="(416) 555-0100" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Required</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option>Buildings &amp; Structures Restoration</option>
+              <option>Parking Garage Restoration</option>
+              <option>Balcony Restoration</option>
+              <option>Waterproofing &amp; Sealants</option>
+              <option>Masonry &amp; Concrete Repair</option>
+              <option>Emergency Repair</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Project Details *</label>
+            <textarea id="message" name="message" placeholder="Please describe your project, location, and any specific concerns or requirements..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Send Message <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo footer-brand-logo">
+          <img src="images/alphalogo.png" alt="ALPHA Ontario Construction" class="logo-img" />
+        </div>
+        <p class="footer-tagline">Over 14 years of trusted construction and restoration services across Ontario.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html">Building Restoration</a></li>
+          <li><a href="services.html">Parking Garage</a></li>
+          <li><a href="services.html">Balcony Repair</a></li>
+          <li><a href="services.html">Waterproofing</a></li>
+          <li><a href="services.html">Masonry &amp; Concrete</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-list">
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <a href="tel:4376030480" style="color:rgba(255,255,255,0.55);">(437) 60 30 48</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:info@alphaontarioconstruction.ca" style="color:rgba(255,255,255,0.55);">info@alphaontarioconstruction.ca</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Ontario, Canada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ALPHA Ontario Construction. All rights reserved. | Licensed &amp; Insured in Ontario</p>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:4376030480" class="mobile-call-btn" aria-label="Call Now"><i class="fa-solid fa-phone"></i></a>
+<script src="js/main.js"></script>
+</body>
+</html>

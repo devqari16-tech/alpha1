@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services – ALPHA Ontario Construction</title>
+  <meta name="description" content="Comprehensive building restoration, fire & emergency restoration, waterproofing, masonry, roofing, balcony repair, and more across Ontario." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .services-index {
+      background: var(--navy);
+      padding: 40px 0;
+    }
+    .services-index-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .serv-idx-item {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.82); font-size: 0.88rem; font-weight: 600;
+      padding: 10px 14px; border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      border-left: 3px solid var(--red);
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .serv-idx-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .serv-idx-item i { color: var(--red); font-size: 0.85rem; }
+
+    .service-section { padding: 80px 0; }
+    .service-section:nth-child(even) { background: var(--light-gray); }
+
+    /* Comprehensive services list at the bottom */
+    .all-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .all-serv-card {
+      background: #fff; border-radius: 12px; padding: 22px 20px;
+      box-shadow: 0 2px 12px rgba(30,42,56,0.07);
+      border-top: 3px solid var(--red);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .all-serv-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(30,42,56,0.13); }
+    .all-serv-card h4 { color: var(--navy); font-size: 0.95rem; margin-bottom: 12px; }
+    .all-serv-card ul { list-style: none; padding: 0; }
+    .all-serv-card ul li {
+      font-size: 0.83rem; color: var(--gray); padding: 5px 0;
+      border-bottom: 1px solid #F0F3F8; display: flex; align-items: center; gap: 8px;
+    }
+    .all-serv-card ul li:last-child { border-bottom: none; }
+    .all-serv-card ul li i { color: var(--red); font-size: 0.7rem; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/alphalogo.png" alt="ALPHA Ontario Construction" class="logo-img" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="dashboard.html" class="nav-cta">Dashboard</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <span class="section-label">What We Offer</span>
+    <h1>Our Services</h1>
+    <p>Comprehensive restoration, construction, and emergency services delivered with precision and professionalism across Ontario.</p>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> <span>/</span> <span>Services</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES INDEX NAV -->
+<div class="services-index">
+  <div class="container">
+    <div class="services-index-grid">
+      <a href="#buildings" class="serv-idx-item"><i class="fa-solid fa-building"></i> 01. Buildings & Structures Restoration</a>
+      <a href="#parking" class="serv-idx-item"><i class="fa-solid fa-square-parking"></i> 02. Parking Garage Restoration</a>
+      <a href="#balcony" class="serv-idx-item"><i class="fa-solid fa-border-top-left"></i> 03. Balcony Restoration</a>
+      <a href="#waterproofing" class="serv-idx-item"><i class="fa-solid fa-droplet"></i> 04. Waterproofing & Sealants</a>
+      <a href="#masonry" class="serv-idx-item"><i class="fa-solid fa-layer-group"></i> 05. Masonry & Concrete Repair</a>
+      <a href="#roofing" class="serv-idx-item"><i class="fa-solid fa-house-chimney"></i> 06. Roof Rehabilitation</a>
+      <a href="#hydro" class="serv-idx-item"><i class="fa-solid fa-hammer"></i> 07. Hydro Demolition & Crack Injection</a>
+      <a href="#envelope" class="serv-idx-item"><i class="fa-solid fa-window-restore"></i> 08. Building Envelope & Windows</a>
+      <a href="#heritage" class="serv-idx-item"><i class="fa-solid fa-landmark"></i> 09. Heritage Building Restoration</a>
+      <a href="#site" class="serv-idx-item"><i class="fa-solid fa-road"></i> 10. Site Works & Accessibility</a>
+      <a href="#fire" class="serv-idx-item"><i class="fa-solid fa-fire"></i> 11. Fire & Smoke Restoration</a>
+      <a href="#storm" class="serv-idx-item"><i class="fa-solid fa-cloud-bolt"></i> 12. Storm, Flood & Emergency</a>
+      <a href="#vandalism" class="serv-idx-item"><i class="fa-solid fa-shield-halved"></i> 13. Vandalism Cleanup & Restoration</a>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE 1: Building Restoration -->
+<section class="service-section" id="buildings">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img1.jpg" alt="Buildings & Structures Restoration" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 01</span>
+        <h2 class="section-title">Buildings &amp; Structures Restoration</h2>
+        <p>We provide comprehensive restoration services for commercial, industrial, and residential buildings. Our experienced team assesses structural integrity and delivers lasting repair solutions.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Structural assessment and engineering analysis</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Facade repair and exterior cladding restoration</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Exterior wall repairs and masonry stonework</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Concrete spall repair and crack injection</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Expansion joint repair and replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Building envelope restoration</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Protective coatings and sealant application</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Post-repair waterproofing and weatherproofing</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 2: Parking Garage -->
+<section class="service-section" id="parking">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img8.jpg" alt="Parking Garage Restoration" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 02</span>
+        <h2 class="section-title">Parking Garage Restoration</h2>
+        <p>Parking structures require specialized restoration techniques due to heavy traffic loads, chemical exposure, and freeze-thaw cycles. We restore garages to full structural integrity.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Slab rehabilitation and deck restoration</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Parking structure rehabilitation</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Traffic deck coatings and waterproofing membranes</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Expansion joint repair and replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Column and beam repair</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Garage rehabilitation and full refurbishment</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Drainage system restoration</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Cathodic protection installation</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 3: Balcony Restoration -->
+<section class="service-section" id="balcony">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img22.jpg" alt="Balcony Restoration" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 03</span>
+        <h2 class="section-title">Balcony Restoration</h2>
+        <p>Balconies are exposed to the harshest weather conditions. Our team provides thorough balcony restoration from structural assessment through waterproofing and finishing.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Structural slab and soffit repair</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Balcony concrete rehabilitation</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Waterproofing membrane installation</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Railing and guardrail replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Balcony deck topping and resurfacing</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Drainage correction and scupper installation</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Concrete crack repair and joint sealing</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 4: Waterproofing -->
+<section class="service-section" id="waterproofing">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img20.jpg" alt="Waterproofing & Sealants" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 04</span>
+        <h2 class="section-title">Waterproofing &amp; Sealants</h2>
+        <p>Water infiltration is one of the most damaging forces in construction. Our waterproofing and moisture protection solutions protect your investment and prevent costly future repairs.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Below-grade and above-grade waterproofing</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Waterproofing and moisture protection systems</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Liquid-applied membrane systems</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Sheet membrane installation</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Caulking and sealant replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Window and sealant repair and replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Injection grouting for crack sealing</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Foundation waterproofing</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 5: Masonry & Concrete -->
+<section class="service-section" id="masonry">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img28.jpg" alt="Masonry & Concrete Repair" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 05</span>
+        <h2 class="section-title">Masonry &amp; Concrete Repair</h2>
+        <p>Our masonry experts restore brick, stone, and concrete to their original strength and appearance using time-tested methods and premium materials.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Tuck-pointing and mortar joint repointing</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Masonry and stonework repairs</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Brick and block replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Concrete crack repair and patching</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Spall repair and surface restoration</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Lintel and sill repair or replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Anti-carbonation coatings and surface sealers</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 6: Roof Rehabilitation -->
+<section class="service-section" id="roofing">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img29.jpg" alt="Roof Rehabilitation" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 06</span>
+        <h2 class="section-title">Roof Rehabilitation</h2>
+        <p>A deteriorating roof compromises the entire structure. We assess and rehabilitate flat, low-slope, and sloped roofing systems for commercial and residential properties across Ontario.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Full roof rehabilitation and replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Flat and low-slope membrane systems</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Roof drainage and overflow correction</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Parapet wall repair and coping</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Flashing and counterflashing installation</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Insulation and vapour barrier upgrades</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Leak investigation and thermal imaging</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 7: Hydro Demolition & Crack Injection -->
+<section class="service-section" id="hydro">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img10.jpg" alt="Hydro Demolition & Crack Injection" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 07</span>
+        <h2 class="section-title">Hydro Demolition &amp; Crack Injection</h2>
+        <p>Precision concrete removal and crack sealing are critical to structural repair. We use industry-leading hydro demolition and injection techniques to restore concrete to its full strength.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Hydro demolition for precise concrete removal</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Crack injection with epoxy and polyurethane</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Carbonation and chloride contamination removal</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Rebar preparation and anti-corrosion treatment</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Structural concrete patching and overlay</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>High-pressure water jetting for surface prep</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Minimal vibration — ideal for occupied buildings</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 8: Building Envelope & Windows -->
+<section class="service-section" id="envelope">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img16.jpg" alt="Building Envelope & Window Restoration" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 08</span>
+        <h2 class="section-title">Building Envelope &amp; Window Restoration</h2>
+        <p>The building envelope is your property's primary defence against weather and energy loss. We restore and upgrade exterior systems including windows, curtain walls, cladding, and sealants.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Building envelope restoration and repair</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Window and sealant repair and replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Curtain wall and glazing system repair</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Air and vapour barrier upgrades</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Exterior cladding and panel replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Thermal performance improvements</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Water infiltration investigation and repair</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 9: Heritage Building Restoration -->
+<section class="service-section" id="heritage">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img7.jpg" alt="Heritage Building Restoration" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 09</span>
+        <h2 class="section-title">Heritage Building Restoration</h2>
+        <p>Historical and heritage buildings demand a specialized approach — preserving original character while meeting modern safety and building codes. Our team brings deep expertise to every heritage project.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Heritage-compliant masonry and stonework repair</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Period-accurate brick replacement and repointing</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Ornamental and architectural detail restoration</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Facade cleaning and surface treatment</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Waterproofing without compromising original materials</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Structural reinforcement and underpinning</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Documentation and compliance with heritage guidelines</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 10: Site Works & Accessibility -->
+<section class="service-section" id="site">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img9.jpg" alt="Site Works & Accessibility" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 10</span>
+        <h2 class="section-title">Site Works &amp; Accessibility Upgrades</h2>
+        <p>From asphalt repairs to full accessibility upgrades, we handle all exterior site improvements — improving safety, functionality, and curb appeal for commercial and residential properties.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Accessibility upgrades (AODA compliance)</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Asphalt repair and replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Curb and sidewalk repair and replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Ramp and entrance modifications</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Tactile walking surface indicators (TWSI)</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Handrail and guardrail installation</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Line painting and surface marking</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 11: Fire & Smoke Restoration -->
+<section class="service-section" id="fire">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img12.jpg" alt="Fire & Smoke Restoration" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 11</span>
+        <h2 class="section-title">Fire &amp; Smoke Restoration</h2>
+        <p>Fire and smoke damage can be devastating. Our certified restoration team responds quickly to assess the damage, secure the site, and restore your property to its pre-loss condition safely and efficiently.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Fire damage cleanup and debris removal</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Fire damage restoration and structural repair</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Smoke cleanup and soot removal</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Char and burn damage remediation</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Surface decontamination and sanitizing</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Board-up and structural securing</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Full restoration and finishing works</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 12: Storm, Flood & Emergency -->
+<section class="service-section" id="storm">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img15.jpg" alt="Storm, Flood & Emergency Restoration" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 12</span>
+        <h2 class="section-title">Storm, Flood &amp; Emergency Restoration</h2>
+        <p>When disaster strikes, every hour counts. We provide rapid emergency response for storm, flood, and weather-related damage, restoring safety and structural integrity as fast as possible.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Emergency restoration services (24/7 response)</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Storm damage restoration and repair</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Flood damage restoration</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Fallen trees and branches removal</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Roof emergency tarping and board-up</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Structural damage assessment and shoring</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Water extraction and drying</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Full post-storm structural restoration</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 13: Vandalism Restoration -->
+<section class="service-section" id="vandalism">
+  <div class="container">
+    <div class="service-detail-grid">
+      <div class="service-detail-img">
+        <img src="images/img2.jpg" alt="Vandalism Cleanup & Restoration" loading="lazy" />
+      </div>
+      <div class="service-detail-content">
+        <span class="section-label">Service 13</span>
+        <h2 class="section-title">Vandalism Cleanup &amp; Restoration</h2>
+        <p>Vandalism can compromise both the appearance and safety of your property. We provide fast, thorough cleanup and full restoration services to bring your building back to its best condition.</p>
+        <ul class="service-bullets">
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Vandalism cleanup and damage assessment</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Vandalism restoration and structural repair</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Graffiti removal from all surfaces</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Window and door replacement</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Surface repainting and finishing</span></li>
+          <li class="service-bullet"><span class="bullet-icon"><i class="fa-solid fa-check"></i></span><span>Emergency board-up and site securing</span></li>
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL SERVICES SUMMARY -->
+<section style="background: var(--light-gray); padding: 80px 0;">
+  <div class="container">
+    <div class="center" style="margin-bottom: 48px;">
+      <span class="section-label">Complete Offering</span>
+      <h2 class="section-title">All Services at a Glance</h2>
+      <p class="section-sub">A comprehensive overview of every service we offer — all backed by 14+ years of expertise across Ontario.</p>
+    </div>
+    <div class="all-services-grid">
+      <div class="all-serv-card">
+        <h4><i class="fa-solid fa-building" style="color:var(--red);margin-right:8px;"></i> Buildings & Structures</h4>
+        <ul>
+          <li><i class="fa-solid fa-circle"></i> Exterior Wall Repairs</li>
+          <li><i class="fa-solid fa-circle"></i> Facade &amp; Cladding Restoration</li>
+          <li><i class="fa-solid fa-circle"></i> Building Envelope Restoration</li>
+          <li><i class="fa-solid fa-circle"></i> Structural Concrete Repair</li>
+          <li><i class="fa-solid fa-circle"></i> Expansion Joint Replacement</li>
+          <li><i class="fa-solid fa-circle"></i> Protective Coatings</li>
+        </ul>
+      </div>
+      <div class="all-serv-card">
+        <h4><i class="fa-solid fa-square-parking" style="color:var(--red);margin-right:8px;"></i> Parking Garages</h4>
+        <ul>
+          <li><i class="fa-solid fa-circle"></i> Parking Structure Rehabilitation</li>
+          <li><i class="fa-solid fa-circle"></i> Garage Rehabilitation</li>
+          <li><i class="fa-solid fa-circle"></i> Traffic Deck Coatings</li>
+          <li><i class="fa-solid fa-circle"></i> Slab &amp; Deck Restoration</li>
+          <li><i class="fa-solid fa-circle"></i> Drainage System Restoration</li>
+          <li><i class="fa-solid fa-circle"></i> Cathodic Protection</li>
+        </ul>
+      </div>
+      <div class="all-serv-card">
+        <h4><i class="fa-solid fa-border-top-left" style="color:var(--red);margin-right:8px;"></i> Balcony Restoration</h4>
+        <ul>
+          <li><i class="fa-solid fa-circle"></i> Balcony Concrete Rehabilitation</li>
+          <li><i class="fa-solid fa-circle"></i> Railing &amp; Guardrail Replacement</li>
+          <li><i class="fa-solid fa-circle"></i> Waterproofing Membranes</li>
+          <li><i class="fa-solid fa-circle"></i> Slab &amp; Soffit Repair</li>
+          <li><i class="fa-solid fa-circle"></i> Deck Resurfacing</li>
+          <li><i class="fa-solid fa-circle"></i> Drainage Correction</li>
+        </ul>
+      </div>
+      <div class="all-serv-card">
+        <h4><i class="fa-solid fa-droplet" style="color:var(--red);margin-right:8px;"></i> Waterproofing</h4>
+        <ul>
+          <li><i class="fa-solid fa-circle"></i> Waterproofing &amp; Moisture Protection</li>
+          <li><i class="fa-solid fa-circle"></i> Window &amp; Sealant Repair</li>
+          <li><i class="fa-solid fa-circle"></i> Liquid-Applied Membranes</li>
+          <li><i class="fa-solid fa-circle"></i> Caulking &amp; Sealant Replacement</li>
+          <li><i class="fa-solid fa-circle"></i> Injection Grouting</li>
+          <li><i class="fa-solid fa-circle"></i> Foundation Waterproofing</li>
+        </ul>
+      </div>
+      <div class="all-serv-card">
+        <h4><i class="fa-solid fa-layer-group" style="color:var(--red);margin-right:8px;"></i> Masonry &amp; Concrete</h4>
+        <ul>
+          <li><i class="fa-solid fa-circle"></i> Masonry &amp; Stonework Repairs</li>
+          <li><i class="fa-solid fa-circle"></i> Tuck-Pointing &amp; Repointing</li>
+          <li><i class="fa-solid fa-circle"></i> Crack Injection</li>
+          <li><i class="fa-solid fa-circle"></i> Spall Repair &amp; Patching</li>
+          <li><i class="fa-solid fa-circle"></i> Lintel &amp; Sill Replacement</li>
+          <li><i class="fa-solid fa-circle"></i> Anti-Carbonation Coatings</li>
+        </ul>
+      </div>
+      <div class="all-serv-card">
+        <h4><i class="fa-solid fa-fire" style="color:var(--red);margin-right:8px;"></i> Fire &amp; Smoke</h4>
+        <ul>
+          <li><i class="fa-solid fa-circle"></i> Fire Damage Cleanup</li>
+          <li><i class="fa-solid fa-circle"></i> Fire Damage Restoration</li>
+          <li><i class="fa-solid fa-circle"></i> Smoke Cleanup</li>
+          <li><i class="fa-solid fa-circle"></i> Char &amp; Burn Remediation</li>
+          <li><i class="fa-solid fa-circle"></i> Surface Decontamination</li>
+          <li><i class="fa-solid fa-circle"></i> Board-Up &amp; Site Securing</li>
+        </ul>
+      </div>
+      <div class="all-serv-card">
+        <h4><i class="fa-solid fa-cloud-bolt" style="color:var(--red);margin-right:8px;"></i> Storm, Flood &amp; Emergency</h4>
+        <ul>
+          <li><i class="fa-solid fa-circle"></i> Emergency Restoration Services</li>
+          <li><i class="fa-solid fa-circle"></i> Storm Damage Restoration</li>
+          <li><i class="fa-solid fa-circle"></i> Flood Damage Restoration</li>
+          <li><i class="fa-solid fa-circle"></i> Fallen Trees &amp; Branches</li>
+          <li><i class="fa-solid fa-circle"></i> Emergency Roof Tarping</li>
+          <li><i class="fa-solid fa-circle"></i> Water Extraction &amp; Drying</li>
+        </ul>
+      </div>
+      <div class="all-serv-card">
+        <h4><i class="fa-solid fa-shield-halved" style="color:var(--red);margin-right:8px;"></i> Vandalism</h4>
+        <ul>
+          <li><i class="fa-solid fa-circle"></i> Vandalism Cleanup</li>
+          <li><i class="fa-solid fa-circle"></i> Vandalism Restoration</li>
+          <li><i class="fa-solid fa-circle"></i> Graffiti Removal</li>
+          <li><i class="fa-solid fa-circle"></i> Window &amp; Door Replacement</li>
+          <li><i class="fa-solid fa-circle"></i> Surface Repainting</li>
+          <li><i class="fa-solid fa-circle"></i> Emergency Board-Up</li>
+        </ul>
+      </div>
+      <div class="all-serv-card">
+        <h4><i class="fa-solid fa-landmark" style="color:var(--red);margin-right:8px;"></i> Heritage Buildings</h4>
+        <ul>
+          <li><i class="fa-solid fa-circle"></i> Heritage Building Restoration</li>
+          <li><i class="fa-solid fa-circle"></i> Period-Accurate Masonry</li>
+          <li><i class="fa-solid fa-circle"></i> Ornamental Detail Restoration</li>
+          <li><i class="fa-solid fa-circle"></i> Facade Cleaning</li>
+          <li><i class="fa-solid fa-circle"></i> Structural Reinforcement</li>
+          <li><i class="fa-solid fa-circle"></i> Heritage Compliance</li>
+        </ul>
+      </div>
+      <div class="all-serv-card">
+        <h4><i class="fa-solid fa-house-chimney" style="color:var(--red);margin-right:8px;"></i> Roof Rehabilitation</h4>
+        <ul>
+          <li><i class="fa-solid fa-circle"></i> Roof Rehabilitation</li>
+          <li><i class="fa-solid fa-circle"></i> Flat Roof Membrane Systems</li>
+          <li><i class="fa-solid fa-circle"></i> Parapet Wall Repair</li>
+          <li><i class="fa-solid fa-circle"></i> Flashing Installation</li>
+          <li><i class="fa-solid fa-circle"></i> Insulation Upgrades</li>
+          <li><i class="fa-solid fa-circle"></i> Leak Investigation</li>
+        </ul>
+      </div>
+      <div class="all-serv-card">
+        <h4><i class="fa-solid fa-hammer" style="color:var(--red);margin-right:8px;"></i> Hydro Demolition</h4>
+        <ul>
+          <li><i class="fa-solid fa-circle"></i> Hydro Demolition</li>
+          <li><i class="fa-solid fa-circle"></i> Crack Injection</li>
+          <li><i class="fa-solid fa-circle"></i> High-Pressure Water Jetting</li>
+          <li><i class="fa-solid fa-circle"></i> Rebar Anti-Corrosion Treatment</li>
+          <li><i class="fa-solid fa-circle"></i> Structural Patching &amp; Overlay</li>
+          <li><i class="fa-solid fa-circle"></i> Carbonation Removal</li>
+        </ul>
+      </div>
+      <div class="all-serv-card">
+        <h4><i class="fa-solid fa-road" style="color:var(--red);margin-right:8px;"></i> Site Works &amp; Accessibility</h4>
+        <ul>
+          <li><i class="fa-solid fa-circle"></i> Accessibility Upgrades</li>
+          <li><i class="fa-solid fa-circle"></i> Asphalt Repair &amp; Replacement</li>
+          <li><i class="fa-solid fa-circle"></i> Curbs &amp; Sidewalk Repair</li>
+          <li><i class="fa-solid fa-circle"></i> Ramp Modifications</li>
+          <li><i class="fa-solid fa-circle"></i> Handrail &amp; Guardrail Installation</li>
+          <li><i class="fa-solid fa-circle"></i> Line Painting &amp; Surface Marking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Ready to Start Your Project?</h2>
+        <p>Contact us today for a free consultation and detailed project estimate.</p>
+      </div>
+      <div class="cta-btns">
+        <a href="tel:4376030480" class="btn btn-white"><i class="fa-solid fa-phone"></i> (437) 60 30 48</a>
+        <a href="contact.html" class="btn btn-ghost">Request a Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo footer-brand-logo">
+          <img src="images/alphalogo.png" alt="ALPHA Ontario Construction" class="logo-img" />
+        </div>
+        <p class="footer-tagline">Over 14 years of trusted construction and restoration services across Ontario.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html#buildings">Building Restoration</a></li>
+          <li><a href="services.html#parking">Parking Garage</a></li>
+          <li><a href="services.html#balcony">Balcony Repair</a></li>
+          <li><a href="services.html#fire">Fire &amp; Smoke Restoration</a></li>
+          <li><a href="services.html#storm">Storm &amp; Emergency</a></li>
+          <li><a href="services.html#heritage">Heritage Restoration</a></li>
+          <li><a href="services.html#roofing">Roof Rehabilitation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-list">
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <a href="tel:4376030480" style="color:rgba(255,255,255,0.55);">(437) 60 30 48</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:info@alphaontarioconstruction.ca" style="color:rgba(255,255,255,0.55);">info@alphaontarioconstruction.ca</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Ontario, Canada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ALPHA Ontario Construction. All rights reserved. | Licensed &amp; Insured in Ontario</p>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:4376030480" class="mobile-call-btn" aria-label="Call Now"><i class="fa-solid fa-phone"></i></a>
+<script src="js/main.js"></script>
+</body>
+</html>
